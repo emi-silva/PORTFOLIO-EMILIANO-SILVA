@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-slate-950">
@@ -18,7 +16,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           {/* Foto y Info */}
           <div className="flex flex-col justify-center">
-            <div className="w-full aspect-square bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg mb-6 flex items-center justify-center">
+            <div className="w-full aspect-square bg-linear-to-br from-blue-500 to-cyan-500 rounded-lg mb-6 flex items-center justify-center">
               <span className="text-6xl">👨‍💻</span>
             </div>
             <h2 className="text-3xl font-bold mb-4">Emili García</h2>
