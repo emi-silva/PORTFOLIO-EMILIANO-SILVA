@@ -51,6 +51,79 @@ const projectsData = [
 ];
 
 export default function Home() {
+  const Badge = ({ label }: { label: string }) => (
+    <span className="px-3 py-1 rounded-full border border-slate-700/60 bg-slate-900/60 text-slate-200 text-xs hover:border-slate-600 hover:bg-slate-900 transition">
+      {label}
+    </span>
+  );
+
+  type CardProps = {
+    title: string;
+    gradient: string;
+    badges: string[];
+    note?: string;
+  };
+
+  const Card = ({ title, gradient, badges, note }: CardProps) => {
+    const [open, setOpen] = useState(false);
+    return (
+      <div className="bg-slate-800/80 hover:bg-slate-800 transition rounded-xl p-6 border border-slate-700/50">
+        <div className="flex items-center justify-between">
+          <h3 className={`text-xl font-semibold bg-clip-text text-transparent ${gradient}`}>{title}</h3>
+          <button
+            className="md:hidden text-slate-300 hover:text-white transition"
+            aria-label={`Alternar ${title}`}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className={`h-5 w-5 transition-transform ${open ? 'rotate-180' : ''}`}
+            >
+              <path fillRule="evenodd" d="M12 14.5a1 1 0 0 1-.707-.293l-6-6a1 1 0 1 1 1.414-1.414L12 12.086l5.293-5.293a1 1 0 1 1 1.414 1.414l-6 6A1 1 0 0 1 12 14.5z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
+        <div className={`mt-4 ${open ? 'block' : 'hidden'} md:block`}>
+          <div className="flex flex-wrap gap-2">
+            {badges.map((b) => (
+              <Badge key={b} label={b} />
+            ))}
+          </div>
+          {note ? (
+            <p className="mt-3 text-xs text-slate-400">{note}</p>
+          ) : null}
+        </div>
+      </div>
+    );
+  };
+
+  const frontendBadges = [
+    'HTML5',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'React',
+    'Angular',
+    'Vue',
+    'Tailwind CSS',
+    'Sass',
+    'Styled Components',
+  ];
+
+  const backendBadges = [
+    'Node.js',
+    'Express.js',
+    'Python',
+    'Django',
+    'Flask',
+    'Java',
+    'Spring Boot',
+  ];
+
+  const dbBadges = ['PostgreSQL', 'MySQL', 'MongoDB'];
+  const testBadges = ['Jest', 'Mocha', 'Chai', 'Postman', 'Insomnia', 'ESLint', 'Prettier'];
+
   return (
     <div className="bg-slate-950 relative">
       {/* Fondo de estrellas animadas */}
@@ -130,46 +203,33 @@ export default function Home() {
           <div className="mt-36">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Tecnologías Principales</h2>
             <div className="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-              {/* Frontend */}
-              <div className="bg-slate-800/80 hover:bg-slate-800 transition rounded-xl p-6 border border-slate-700/50">
-                <h3 className="text-xl font-semibold mb-4 bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">🌐 Frontend</h3>
-                <ul className="space-y-2 text-slate-300 text-sm leading-relaxed list-disc pl-5">
-                  <li><span className="text-slate-200 font-medium">HTML5, CSS3 y JavaScript (ES6+)</span>: base sólida para cualquier desarrollo web.</li>
-                  <li><span className="text-slate-200 font-medium">Frameworks modernos</span>:</li>
-                  <li>React (el más demandado, ideal para SPAs y ecosistemas grandes).</li>
-                  <li>Alternativas: Angular o Vue, aunque React suele ser la mejor inversión inicial.</li>
-                  <li><span className="text-slate-200 font-medium">Herramientas de estilo</span>: Tailwind CSS, Sass o Styled Components para modularidad y rapidez.</li>
-                </ul>
-              </div>
+              <Card
+                title="🌐 Frontend"
+                gradient="bg-linear-to-r from-cyan-400 to-blue-500"
+                badges={frontendBadges}
+                note="Base sólida para web; React suele ser la mejor inversión inicial."
+              />
 
-              {/* Backend */}
-              <div className="bg-slate-800/80 hover:bg-slate-800 transition rounded-xl p-6 border border-slate-700/50">
-                <h3 className="text-xl font-semibold mb-4 bg-linear-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">⚙️ Backend</h3>
-                <ul className="space-y-2 text-slate-300 text-sm leading-relaxed list-disc pl-5">
-                  <li><span className="text-slate-200 font-medium">Node.js</span>: entorno de ejecución rápido y asíncrono.</li>
-                  <li><span className="text-slate-200 font-medium">Express.js</span>: framework ligero para construir APIs RESTful.</li>
-                  <li>Otros lenguajes útiles: <span className="text-slate-200">Python (Django/Flask)</span> o <span className="text-slate-200">Java (Spring Boot)</span>, aunque con Node.js ya cubrís gran parte de las necesidades.</li>
-                </ul>
-              </div>
+              <Card
+                title="⚙️ Backend"
+                gradient="bg-linear-to-r from-teal-400 to-emerald-400"
+                badges={backendBadges}
+                note="Node.js y Express para APIs; Python/Java como alternativas."
+              />
 
-              {/* Bases de datos */}
-              <div className="bg-slate-800/80 hover:bg-slate-800 transition rounded-xl p-6 border border-slate-700/50">
-                <h3 className="text-xl font-semibold mb-4 bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">🗄️ Bases de datos</h3>
-                <ul className="space-y-2 text-slate-300 text-sm leading-relaxed list-disc pl-5">
-                  <li><span className="text-slate-200 font-medium">SQL</span>: PostgreSQL o MySQL para datos estructurados.</li>
-                  <li><span className="text-slate-200 font-medium">NoSQL</span>: MongoDB, muy usado en proyectos modernos.</li>
-                </ul>
-              </div>
+              <Card
+                title="🗄️ Bases de datos"
+                gradient="bg-linear-to-r from-purple-400 to-pink-400"
+                badges={dbBadges}
+                note="SQL (PostgreSQL/MySQL) y NoSQL (MongoDB)."
+              />
 
-              {/* Testing y calidad */}
-              <div className="bg-slate-800/80 hover:bg-slate-800 transition rounded-xl p-6 border border-slate-700/50">
-                <h3 className="text-xl font-semibold mb-4 bg-linear-to-r from-orange-300 to-pink-400 bg-clip-text text-transparent">🧪 Testing y calidad</h3>
-                <ul className="space-y-2 text-slate-300 text-sm leading-relaxed list-disc pl-5">
-                  <li><span className="text-slate-200 font-medium">Jest / Mocha / Chai</span>: pruebas unitarias y de integración.</li>
-                  <li><span className="text-slate-200 font-medium">Postman / Insomnia</span>: testeo de APIs.</li>
-                  <li><span className="text-slate-200 font-medium">ESLint / Prettier</span>: mantener código limpio y consistente.</li>
-                </ul>
-              </div>
+              <Card
+                title="🧪 Testing y calidad"
+                gradient="bg-linear-to-r from-orange-300 to-pink-400"
+                badges={testBadges}
+                note="Pruebas, testeo de APIs y estilo consistente."
+              />
             </div>
           </div>
         </div>
