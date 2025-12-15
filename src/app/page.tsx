@@ -140,8 +140,8 @@ export default function Home() {
   const Badge = ({ label }: { label: string }) => {
     const Icon = iconFor(label);
     return (
-      <span className="px-3 py-1 rounded-full border border-slate-700/60 bg-slate-900/60 text-slate-200 text-xs hover:border-slate-600 hover:bg-slate-900 transition inline-flex items-center gap-1.5">
-        {Icon ? <Icon className="h-4 w-4 text-slate-400" /> : null}
+      <span className="px-4 py-2 rounded-full border border-slate-700/60 bg-slate-900/60 text-slate-200 text-sm hover:border-slate-600 hover:bg-slate-900 transition inline-flex items-center gap-2">
+        {Icon ? <Icon className="h-5 w-5 text-slate-400" /> : null}
         <span>{label}</span>
       </span>
     );
@@ -158,7 +158,7 @@ export default function Home() {
     return (
       <div className="bg-slate-800/80 hover:bg-slate-800 transition rounded-xl p-6 border border-slate-700/50">
         <div className="flex items-center justify-between">
-          <h3 className={`text-xl font-semibold bg-clip-text text-transparent ${gradient}`}>{title}</h3>
+          <h3 className={`text-2xl font-semibold bg-clip-text text-transparent ${gradient}`}>{title}</h3>
           <button
             className="md:hidden text-slate-300 hover:text-white transition"
             aria-label={`Alternar ${title}`}
@@ -175,7 +175,7 @@ export default function Home() {
           </button>
         </div>
         <div className={`mt-4 ${open ? 'block' : 'hidden'} md:block`}>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3">
             {badges.map((b) => (
               <Badge key={b} label={b} />
             ))}
