@@ -1,6 +1,35 @@
 'use client';
 
 import { useState } from 'react';
+import type { IconType } from 'react-icons';
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiReact,
+  SiAngular,
+  SiVuedotjs,
+  SiTailwindcss,
+  SiSass,
+  SiStyledcomponents,
+  SiNodedotjs,
+  SiExpress,
+  SiPython,
+  SiDjango,
+  SiFlask,
+  SiJava,
+  SiSpring,
+  SiPostgresql,
+  SiMysql,
+  SiMongodb,
+  SiJest,
+  SiMocha,
+  SiChai,
+  SiPostman,
+  SiInsomnia,
+  SiEslint,
+  SiPrettier,
+} from 'react-icons/si';
 import ProjectCard from '@/components/ProjectCard';
 import ContactForm from '@/components/ContactForm';
 import StarryBackground from '@/components/StarryBackground';
@@ -51,20 +80,82 @@ const projectsData = [
 ];
 
 export default function Home() {
-  const Badge = ({ label }: { label: string }) => (
-    <span className="px-3 py-1 rounded-full border border-slate-700/60 bg-slate-900/60 text-slate-200 text-xs hover:border-slate-600 hover:bg-slate-900 transition">
-      {label}
-    </span>
-  );
+  const iconFor = (label: string): IconType | null => {
+    switch (label) {
+      case 'HTML5':
+        return SiHtml5;
+      case 'CSS3':
+        return SiCss3;
+      case 'JavaScript (ES6+)':
+        return SiJavascript;
+      case 'React':
+        return SiReact;
+      case 'Angular':
+        return SiAngular;
+      case 'Vue':
+        return SiVuedotjs;
+      case 'Tailwind CSS':
+        return SiTailwindcss;
+      case 'Sass':
+        return SiSass;
+      case 'Styled Components':
+        return SiStyledcomponents;
+      case 'Node.js':
+        return SiNodedotjs;
+      case 'Express.js':
+        return SiExpress;
+      case 'Python':
+        return SiPython;
+      case 'Django':
+        return SiDjango;
+      case 'Flask':
+        return SiFlask;
+      case 'Java':
+        return SiJava;
+      case 'Spring Boot':
+        return SiSpring;
+      case 'PostgreSQL':
+        return SiPostgresql;
+      case 'MySQL':
+        return SiMysql;
+      case 'MongoDB':
+        return SiMongodb;
+      case 'Jest':
+        return SiJest;
+      case 'Mocha':
+        return SiMocha;
+      case 'Chai':
+        return SiChai;
+      case 'Postman':
+        return SiPostman;
+      case 'Insomnia':
+        return SiInsomnia;
+      case 'ESLint':
+        return SiEslint;
+      case 'Prettier':
+        return SiPrettier;
+      default:
+        return null;
+    }
+  };
+
+  const Badge = ({ label }: { label: string }) => {
+    const Icon = iconFor(label);
+    return (
+      <span className="px-3 py-1 rounded-full border border-slate-700/60 bg-slate-900/60 text-slate-200 text-xs hover:border-slate-600 hover:bg-slate-900 transition inline-flex items-center gap-1.5">
+        {Icon ? <Icon className="h-4 w-4 text-slate-400" /> : null}
+        <span>{label}</span>
+      </span>
+    );
+  };
 
   type CardProps = {
     title: string;
     gradient: string;
     badges: string[];
-    note?: string;
   };
 
-  const Card = ({ title, gradient, badges, note }: CardProps) => {
+  const Card = ({ title, gradient, badges }: CardProps) => {
     const [open, setOpen] = useState(false);
     return (
       <div className="bg-slate-800/80 hover:bg-slate-800 transition rounded-xl p-6 border border-slate-700/50">
@@ -91,9 +182,6 @@ export default function Home() {
               <Badge key={b} label={b} />
             ))}
           </div>
-          {note ? (
-            <p className="mt-3 text-xs text-slate-400">{note}</p>
-          ) : null}
         </div>
       </div>
     );
@@ -207,28 +295,24 @@ export default function Home() {
                 title="🌐 Frontend"
                 gradient="bg-linear-to-r from-cyan-400 to-blue-500"
                 badges={frontendBadges}
-                note="Base sólida para web; React suele ser la mejor inversión inicial."
               />
 
               <Card
                 title="⚙️ Backend"
                 gradient="bg-linear-to-r from-teal-400 to-emerald-400"
                 badges={backendBadges}
-                note="Node.js y Express para APIs; Python/Java como alternativas."
               />
 
               <Card
                 title="🗄️ Bases de datos"
                 gradient="bg-linear-to-r from-purple-400 to-pink-400"
                 badges={dbBadges}
-                note="SQL (PostgreSQL/MySQL) y NoSQL (MongoDB)."
               />
 
               <Card
                 title="🧪 Testing y calidad"
                 gradient="bg-linear-to-r from-orange-300 to-pink-400"
                 badges={testBadges}
-                note="Pruebas, testeo de APIs y estilo consistente."
               />
             </div>
           </div>
