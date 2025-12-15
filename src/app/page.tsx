@@ -17,14 +17,12 @@ import {
   SiPython,
   SiDjango,
   SiFlask,
-  SiJava,
   SiSpring,
   SiPostgresql,
   SiMysql,
   SiMongodb,
   SiJest,
   SiMocha,
-  SiChai,
   SiPostman,
   SiInsomnia,
   SiEslint,
@@ -111,7 +109,7 @@ export default function Home() {
       case 'Flask':
         return SiFlask;
       case 'Java':
-        return SiJava;
+        return null;
       case 'Spring Boot':
         return SiSpring;
       case 'PostgreSQL':
@@ -125,7 +123,7 @@ export default function Home() {
       case 'Mocha':
         return SiMocha;
       case 'Chai':
-        return SiChai;
+        return null;
       case 'Postman':
         return SiPostman;
       case 'Insomnia':
