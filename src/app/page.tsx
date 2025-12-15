@@ -69,83 +69,107 @@ export default function Home() {
       </div>
 
       {/* Hero + About Section */}
-      <section id="hero" className="min-h-screen flex items-center pt-20 relative z-10">
-        <div className="container mx-auto px-6 py-20 md:py-32">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+      <section id="hero" className="min-h-screen flex items-center pt-16 relative z-10">
+        <div className="container mx-auto px-6 py-10 md:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start mb-20">
             {/* Contenido Principal */}
             <div className="flex flex-col justify-center">
               <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                 Hola, Soy Emiliano Silva
               </h1>
               <p className="text-lg text-slate-400 mb-4 leading-relaxed">
-                Soy un desarrollador Full Stack con más de 5 años de experiencia en el desarrollo de aplicaciones web modernas. Mi pasión es crear soluciones tecnológicas que resuelvan problemas reales y brinden valor a los usuarios.
+                Desarrollador full stack con un año de experiencia en la creación de aplicaciones web completas, desde la interfaz hasta la gestión de datos. Me destaco por construir soluciones escalables y seguras, aplicando buenas prácticas de arquitectura y validación.
+              </p>
+              <p className="text-lg text-slate-400 mb-4 leading-relaxed">
+                He trabajado en proyectos con funcionalidades en tiempo real, sistemas de autenticación y optimización de flujos de datos, siempre priorizando la experiencia del usuario y la eficiencia del backend. Mi enfoque combina creatividad y precisión técnica, logrando entregas modernas, mantenibles y robustas.
               </p>
               <p className="text-lg text-slate-400 mb-6 leading-relaxed">
-                Especializado en React, Next.js, Node.js y TypeScript. Apasionado por aprender nuevas tecnologías y compartir conocimientos con la comunidad.
+                Cuento con experiencia en despliegue, control de versiones y pruebas, lo que me permite colaborar eficazmente en equipos y garantizar la calidad del producto final. Mi objetivo es seguir creciendo profesionalmente, aportando innovación y mejorando continuamente mis habilidades.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('projects');
-                    element?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition"
-                >
-                  Ver Proyectos
-                </button>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('contact');
-                    element?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="px-8 py-3 border-2 border-blue-600 text-blue-400 hover:bg-blue-600/10 rounded-lg font-semibold transition"
-                >
-                  Contactarme
-                </button>
-              </div>
+              {/* Botones de acción removidos a pedido */}
 
-              {/* Estadísticas */}
-              <div className="grid grid-cols-3 gap-4">
-                <div className="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition">
-                  <h3 className="text-2xl font-bold text-blue-400 mb-1">50+</h3>
-                  <p className="text-xs sm:text-sm text-slate-400">Proyectos</p>
-                </div>
-                <div className="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition">
-                  <h3 className="text-2xl font-bold text-blue-400 mb-1">5+</h3>
-                  <p className="text-xs sm:text-sm text-slate-400">Experiencia</p>
-                </div>
-                <div className="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition">
-                  <h3 className="text-2xl font-bold text-blue-400 mb-1">100%</h3>
-                  <p className="text-xs sm:text-sm text-slate-400">Satisfacción</p>
-                </div>
-              </div>
+              {/* Estadísticas removidas (ahora bajo la imagen) */}
             </div>
 
             {/* Foto y Tarjeta Perfil */}
-            <div className="flex flex-col items-center justify-center">
-              <div className="w-full max-w-xs aspect-square bg-linear-to-br from-blue-500 to-cyan-500 rounded-full mb-6 flex items-center justify-center shadow-2xl">
-                <span className="text-8xl">👨‍💻</span>
+            <div className="flex flex-col items-center justify-center mt-6 md:mt-8">
+              <div className="w-64 md:w-72 aspect-square rounded-full mb-12 shadow-2xl overflow-hidden bg-slate-900">
+                <img src="/images/profile.jpg" alt="Emiliano Silva" className="w-full h-full object-cover object-[50%_20%] scale-110" />
               </div>
-              <div className="bg-slate-800 p-6 rounded-lg w-full text-center">
-                <h3 className="text-2xl font-bold mb-2">Emili García</h3>
-                <p className="text-slate-400 mb-4">Full Stack Developer</p>
-                <div className="flex gap-2 justify-center">
-                  <span className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm">Problem Solver</span>
-                  <span className="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-sm">Tech Enthusiast</span>
+              <div className="bg-slate-800/60 p-4 rounded-lg w-full text-center backdrop-blur border border-slate-700/50">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {/* Proyectos */}
+                  <div className="group relative rounded-xl p-[1px] bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 transition-transform duration-300 hover:scale-[1.02]">
+                    <div className="rounded-xl bg-slate-900/90 p-3 flex flex-col items-center justify-center h-full shadow-lg transition-colors duration-300 group-hover:bg-slate-900/70">
+                      <span className="text-2xl font-bold text-blue-400">35+</span>
+                      <span className="text-slate-400 text-xs">Proyectos</span>
+                    </div>
+                  </div>
+
+                  {/* Experiencia */}
+                  <div className="group relative rounded-xl p-[1px] bg-linear-to-r from-cyan-500 to-emerald-500 transition-transform duration-300 hover:scale-[1.02]">
+                    <div className="rounded-xl bg-slate-900/90 p-3 flex flex-col items-center justify-center h-full shadow-lg transition-colors duration-300 group-hover:bg-slate-900/70">
+                      <span className="text-2xl font-bold text-cyan-300">1.5+</span>
+                      <span className="text-slate-400 text-xs">Años de experiencia</span>
+                    </div>
+                  </div>
+
+                  {/* Satisfacción */}
+                  <div className="group relative rounded-xl p-[1px] bg-linear-to-r from-emerald-500 to-teal-500 transition-transform duration-300 hover:scale-[1.02]">
+                    <div className="rounded-xl bg-slate-900/90 p-3 flex flex-col items-center justify-center h-full shadow-lg transition-colors duration-300 group-hover:bg-slate-900/70">
+                      <span className="text-2xl font-bold text-emerald-400">100%</span>
+                      <span className="text-slate-400 text-xs">Satisfacción</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Tecnologías */}
-          <div className="mt-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Tecnologías Principales</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind'].map((tech) => (
-                <div key={tech} className="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition transform hover:scale-105">
-                  <p className="text-blue-400 font-semibold">{tech}</p>
-                </div>
-              ))}
+          <div className="mt-36">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Tecnologías Principales</h2>
+            <div className="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+              {/* Frontend */}
+              <div className="bg-slate-800/80 hover:bg-slate-800 transition rounded-xl p-6 border border-slate-700/50">
+                <h3 className="text-xl font-semibold mb-4 bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">🌐 Frontend</h3>
+                <ul className="space-y-2 text-slate-300 text-sm leading-relaxed list-disc pl-5">
+                  <li><span className="text-slate-200 font-medium">HTML5, CSS3 y JavaScript (ES6+)</span>: base sólida para cualquier desarrollo web.</li>
+                  <li><span className="text-slate-200 font-medium">Frameworks modernos</span>:</li>
+                  <li>React (el más demandado, ideal para SPAs y ecosistemas grandes).</li>
+                  <li>Alternativas: Angular o Vue, aunque React suele ser la mejor inversión inicial.</li>
+                  <li><span className="text-slate-200 font-medium">Herramientas de estilo</span>: Tailwind CSS, Sass o Styled Components para modularidad y rapidez.</li>
+                </ul>
+              </div>
+
+              {/* Backend */}
+              <div className="bg-slate-800/80 hover:bg-slate-800 transition rounded-xl p-6 border border-slate-700/50">
+                <h3 className="text-xl font-semibold mb-4 bg-linear-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">⚙️ Backend</h3>
+                <ul className="space-y-2 text-slate-300 text-sm leading-relaxed list-disc pl-5">
+                  <li><span className="text-slate-200 font-medium">Node.js</span>: entorno de ejecución rápido y asíncrono.</li>
+                  <li><span className="text-slate-200 font-medium">Express.js</span>: framework ligero para construir APIs RESTful.</li>
+                  <li>Otros lenguajes útiles: <span className="text-slate-200">Python (Django/Flask)</span> o <span className="text-slate-200">Java (Spring Boot)</span>, aunque con Node.js ya cubrís gran parte de las necesidades.</li>
+                </ul>
+              </div>
+
+              {/* Bases de datos */}
+              <div className="bg-slate-800/80 hover:bg-slate-800 transition rounded-xl p-6 border border-slate-700/50">
+                <h3 className="text-xl font-semibold mb-4 bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">🗄️ Bases de datos</h3>
+                <ul className="space-y-2 text-slate-300 text-sm leading-relaxed list-disc pl-5">
+                  <li><span className="text-slate-200 font-medium">SQL</span>: PostgreSQL o MySQL para datos estructurados.</li>
+                  <li><span className="text-slate-200 font-medium">NoSQL</span>: MongoDB, muy usado en proyectos modernos.</li>
+                </ul>
+              </div>
+
+              {/* Testing y calidad */}
+              <div className="bg-slate-800/80 hover:bg-slate-800 transition rounded-xl p-6 border border-slate-700/50">
+                <h3 className="text-xl font-semibold mb-4 bg-linear-to-r from-orange-300 to-pink-400 bg-clip-text text-transparent">🧪 Testing y calidad</h3>
+                <ul className="space-y-2 text-slate-300 text-sm leading-relaxed list-disc pl-5">
+                  <li><span className="text-slate-200 font-medium">Jest / Mocha / Chai</span>: pruebas unitarias y de integración.</li>
+                  <li><span className="text-slate-200 font-medium">Postman / Insomnia</span>: testeo de APIs.</li>
+                  <li><span className="text-slate-200 font-medium">ESLint / Prettier</span>: mantener código limpio y consistente.</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -181,7 +205,7 @@ export default function Home() {
               <div className="space-y-6">
                 {/* Email */}
                 <div className="bg-slate-800 p-6 rounded-lg">
-                  <h3 className="text-lg font-bold text-blue-400 mb-2">Email</h3>
+                  <h3 className="text-lg font-bold mb-2 bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Email</h3>
                   <a href="mailto:emili@example.com" className="text-slate-300 hover:text-blue-400 transition">
                     emili@example.com
                   </a>
@@ -189,7 +213,7 @@ export default function Home() {
 
                 {/* Teléfono */}
                 <div className="bg-slate-800 p-6 rounded-lg">
-                  <h3 className="text-lg font-bold text-cyan-400 mb-2">Teléfono</h3>
+                  <h3 className="text-lg font-bold mb-2 bg-linear-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">Teléfono</h3>
                   <a href="tel:+34123456789" className="text-slate-300 hover:text-cyan-400 transition">
                     +34 123 456 789
                   </a>
@@ -197,7 +221,7 @@ export default function Home() {
 
                 {/* Redes Sociales */}
                 <div className="bg-slate-800 p-6 rounded-lg">
-                  <h3 className="text-lg font-bold text-purple-400 mb-4">Redes Sociales</h3>
+                  <h3 className="text-lg font-bold mb-4 bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Redes Sociales</h3>
                   <div className="space-y-2">
                     <a
                       href="https://github.com"
@@ -228,7 +252,7 @@ export default function Home() {
 
                 {/* Ubicación */}
                 <div className="bg-slate-800 p-6 rounded-lg">
-                  <h3 className="text-lg font-bold text-pink-400 mb-2">Ubicación</h3>
+                  <h3 className="text-lg font-bold mb-2 bg-linear-to-r from-pink-400 to-orange-300 bg-clip-text text-transparent">Ubicación</h3>
                   <p className="text-slate-300">Madrid, España 🇪🇸</p>
                 </div>
               </div>
@@ -242,7 +266,7 @@ export default function Home() {
 
           {/* Mapa de Disponibilidad */}
           <div className="bg-slate-800 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold mb-4">Disponibilidad</h3>
+            <h3 className="text-2xl font-bold mb-4 bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Disponibilidad</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <p className="text-slate-400 mb-2">Freelance Projects</p>
