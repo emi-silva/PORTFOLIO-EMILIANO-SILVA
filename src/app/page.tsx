@@ -11,7 +11,6 @@ import {
   SiVuedotjs,
   SiTailwindcss,
   SiSass,
-  SiStyledcomponents,
   SiNodedotjs,
   SiExpress,
   SiPython,
@@ -96,8 +95,6 @@ export default function Home() {
         return SiTailwindcss;
       case 'Sass':
         return SiSass;
-      case 'Styled Components':
-        return SiStyledcomponents;
       case 'Node.js':
         return SiNodedotjs;
       case 'Express.js':
@@ -108,8 +105,6 @@ export default function Home() {
         return SiDjango;
       case 'Flask':
         return SiFlask;
-      case 'Java':
-        return null;
       case 'Spring Boot':
         return SiSpring;
       case 'PostgreSQL':
@@ -122,8 +117,6 @@ export default function Home() {
         return SiJest;
       case 'Mocha':
         return SiMocha;
-      case 'Chai':
-        return null;
       case 'Postman':
         return SiPostman;
       case 'Insomnia':
@@ -194,7 +187,6 @@ export default function Home() {
     'Vue',
     'Tailwind CSS',
     'Sass',
-    'Styled Components',
   ];
 
   const backendBadges = [
@@ -203,12 +195,11 @@ export default function Home() {
     'Python',
     'Django',
     'Flask',
-    'Java',
     'Spring Boot',
   ];
 
   const dbBadges = ['PostgreSQL', 'MySQL', 'MongoDB'];
-  const testBadges = ['Jest', 'Mocha', 'Chai', 'Postman', 'Insomnia', 'ESLint', 'Prettier'];
+  const testBadges = ['Jest', 'Mocha', 'Postman', 'Insomnia', 'ESLint', 'Prettier'];
 
   return (
     <div className="bg-slate-950 relative">
