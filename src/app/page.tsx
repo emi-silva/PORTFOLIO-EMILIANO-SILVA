@@ -249,7 +249,7 @@ export default function Home() {
               <div className="bg-slate-800/60 p-4 rounded-lg w-full text-center backdrop-blur border border-slate-700/50">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {/* Proyectos */}
-                  <div className="group relative rounded-xl p-[1px] bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 transition-transform duration-300 hover:scale-[1.02]">
+                  <div className="group relative rounded-xl p-px bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 transition-transform duration-300 hover:scale-[1.02]">
                     <div className="rounded-xl bg-slate-900/90 p-3 flex flex-col items-center justify-center h-full shadow-lg transition-colors duration-300 group-hover:bg-slate-900/70">
                       <span className="text-2xl font-bold text-blue-400">35+</span>
                       <span className="text-slate-400 text-xs">Proyectos</span>
@@ -257,7 +257,7 @@ export default function Home() {
                   </div>
 
                   {/* Experiencia */}
-                  <div className="group relative rounded-xl p-[1px] bg-linear-to-r from-cyan-500 to-emerald-500 transition-transform duration-300 hover:scale-[1.02]">
+                  <div className="group relative rounded-xl p-px bg-linear-to-r from-cyan-500 to-emerald-500 transition-transform duration-300 hover:scale-[1.02]">
                     <div className="rounded-xl bg-slate-900/90 p-3 flex flex-col items-center justify-center h-full shadow-lg transition-colors duration-300 group-hover:bg-slate-900/70">
                       <span className="text-2xl font-bold text-cyan-300">1.5+</span>
                       <span className="text-slate-400 text-xs">Años de experiencia</span>
@@ -265,7 +265,7 @@ export default function Home() {
                   </div>
 
                   {/* Satisfacción */}
-                  <div className="group relative rounded-xl p-[1px] bg-linear-to-r from-emerald-500 to-teal-500 transition-transform duration-300 hover:scale-[1.02]">
+                  <div className="group relative rounded-xl p-px bg-linear-to-r from-emerald-500 to-teal-500 transition-transform duration-300 hover:scale-[1.02]">
                     <div className="rounded-xl bg-slate-900/90 p-3 flex flex-col items-center justify-center h-full shadow-lg transition-colors duration-300 group-hover:bg-slate-900/70">
                       <span className="text-2xl font-bold text-emerald-400">100%</span>
                       <span className="text-slate-400 text-xs">Satisfacción</span>
@@ -339,16 +339,16 @@ export default function Home() {
                 {/* Email */}
                 <div className="bg-slate-800 p-6 rounded-lg">
                   <h3 className="text-lg font-bold mb-2 bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Email</h3>
-                  <a href="mailto:emili@example.com" className="text-slate-300 hover:text-blue-400 transition">
-                    emili@example.com
+                  <a href="mailto:emilianosilva25@gmail.com" className="text-slate-300 hover:text-blue-400 transition">
+                    emilianosilva25@gmail.com
                   </a>
                 </div>
 
                 {/* Teléfono */}
                 <div className="bg-slate-800 p-6 rounded-lg">
                   <h3 className="text-lg font-bold mb-2 bg-linear-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">Teléfono</h3>
-                  <a href="tel:+34123456789" className="text-slate-300 hover:text-cyan-400 transition">
-                    +34 123 456 789
+                  <a href="tel:+543413916033" className="text-slate-300 hover:text-cyan-400 transition">
+                    +54 341 3 916033
                   </a>
                 </div>
 
@@ -386,7 +386,7 @@ export default function Home() {
                 {/* Ubicación */}
                 <div className="bg-slate-800 p-6 rounded-lg">
                   <h3 className="text-lg font-bold mb-2 bg-linear-to-r from-pink-400 to-orange-300 bg-clip-text text-transparent">Ubicación</h3>
-                  <p className="text-slate-300">Madrid, España 🇪🇸</p>
+                  <p className="text-slate-300">Rosario, Santa Fe Argentina 🇦🇷</p>
                 </div>
               </div>
             </div>
@@ -407,11 +407,11 @@ export default function Home() {
               </div>
               <div className="text-center">
                 <p className="text-slate-400 mb-2">Tiempo de Respuesta</p>
-                <p className="text-2xl font-bold text-blue-400">24 horas</p>
+                <p className="text-2xl font-bold text-blue-400">Inmediata</p>
               </div>
               <div className="text-center">
                 <p className="text-slate-400 mb-2">Horario Laboral</p>
-                <p className="text-2xl font-bold text-cyan-400">Flexible</p>
+                <p className="text-2xl font-bold text-cyan-400">Full Time</p>
               </div>
             </div>
           </div>
