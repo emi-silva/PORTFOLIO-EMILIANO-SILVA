@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ProjectCardProps {
   title: string;
@@ -13,15 +14,22 @@ export default function ProjectCard({
   title,
   description,
   technologies,
+  imageUrl,
   githubUrl,
   liveUrl,
 }: ProjectCardProps) {
   return (
-    <div className="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105">
-      {/* Imagen placeholder */}
-      <div className="bg-linear-to-r from-blue-500 to-cyan-500 h-48 flex items-center justify-center">
-        <span className="text-white text-4xl">📦</span>
-      </div>
+    <div className="bg-slate-800 rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-105" style={{ boxShadow: '0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.2)' }}>
+      {/* Imagen del proyecto */}
+      {imageUrl ? (
+        <div className="relative w-full h-48">
+          <Image src={imageUrl} alt={title} fill className="object-cover" />
+        </div>
+      ) : (
+        <div className="bg-linear-to-r from-blue-500 to-cyan-500 h-48 flex items-center justify-center">
+          <span className="text-white text-4xl">📦</span>
+        </div>
+      )}
 
       {/* Contenido */}
       <div className="p-6">

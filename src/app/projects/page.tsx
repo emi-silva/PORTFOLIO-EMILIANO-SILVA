@@ -2,18 +2,20 @@ import ProjectCard from "@/components/ProjectCard";
 
 const projectsData = [
   {
-    title: "E-Commerce Platform",
-    description: "Plataforma de comercio electrónico completa con carrito de compras, pagos y panel de administración.",
-    technologies: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    title: "BASE PARA E-COMERCE",
+    description: "Plataforma base para cualquier tipo de ecommerce con pagos y panel de administración.",
+    technologies: ["Node.js", "Express", "React", "MongoDB", "JWT", "Vite"],
+    imageUrl: "/images/ecomerce.png",
+    githubUrl: "https://github.com/emi-silva/BASE-DE-ECOMERCE",
+    liveUrl: "https://base-de-ecomerce.vercel.app/",
   },
   {
-    title: "Task Management App",
+    title: "Aplicación de Gestión",
     description: "Aplicación de gestión de tareas en tiempo real con colaboración de equipo.",
-    technologies: ["React", "Firebase", "TypeScript", "Tailwind"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    technologies: ["React", "Node.js", "Express", "Socket.IO", "Prisma", "PostgreSQL", "Docker"],
+    imageUrl: "/images/task-management.png",
+    githubUrl: "https://github.com/emi-silva/APLICATION-MANAGEMENT",
+    liveUrl: "https://aplication-management.vercel.app/",
   },
   {
     title: "Blog Platform",
