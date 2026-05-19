@@ -1,17 +1,8 @@
-import heroImg from "../assets/hero.png";
+import heroImg from "../assets/IMG-20221217-WA0154~2-Photoroom.png";
 
 export default function Header() {
   return (
     <header className="header">
-      <div className="header-top">
-        <span className="brand">emi-dev</span>
-        <nav className="header-nav">
-          <a href="#experiencia">Sobre Mí</a>
-          <a href="#proyectos">Proyectos</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
-      </div>
-
       <div className="header-body">
         <div className="header-content">
           <span className="eyebrow">Hola, soy</span>
