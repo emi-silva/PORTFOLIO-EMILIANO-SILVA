@@ -77,7 +77,7 @@ export default function Contact() {
       </div>
 
       <div className="contact-card">
-        <div>
+        <div className="contact-left">
           <p className="contact-copy">
             Si buscas un desarrollador que entregue soluciones reales y con estilo,
             envíame un mensaje. Estoy listo para ayudarte a construir algo
@@ -85,6 +85,7 @@ export default function Contact() {
           </p>
 
           <form
+            id="contact-form"
             className="contact-form"
             onSubmit={async (e) => {
               e.preventDefault();
@@ -116,14 +117,31 @@ export default function Contact() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
+          </form>
+        </div>
 
-            <div className="contact-actions">
-              <button className="button primary" type="submit" disabled={status === 'sending'}>
+        <div className="contact-right">
+          <div className="contact-actions">
+              <button
+                className="button email"
+                form="contact-form"
+                type="submit"
+                disabled={status === 'sending'}
+                onClick={async (e) => {
+                  // When clicking the external submit button, ensure form submit handler runs
+                  if (SERVICE_ID.includes('your_') || TEMPLATE_ID.includes('your_')) {
+                    // fallback to mailto; buildMailto uses current subject/message/name
+                    window.location.href = buildMailto();
+                    return;
+                  }
+                  await sendWithEmailJS();
+                }}
+              >
                 {status === 'sending' ? 'Enviando...' : 'Enviar correo'}
               </button>
 
               <a
-                className="button primary"
+                className="button whatsapp"
                 href="https://wa.me/543413916033?text=Hola%20Emiliano%2C%20me%20interesa%20tu%20servicio%20de%20desarrollo%20web"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -138,17 +156,17 @@ export default function Contact() {
               >
                 LinkedIn
               </a>
-            </div>
-          </form>
+          </div>
+        </div>
 
-          {status === 'success' && <p className="contact-status">Mensaje enviado correctamente.</p>}
+        {status === 'success' && <p className="contact-status">Mensaje enviado correctamente.</p>}
           {status === 'error' && (
             <p className="contact-status">Error al enviar. {errorMsg || 'Intenta nuevamente.'}</p>
           )}
-          {SERVICE_ID.includes('your_') && (
-            <p className="contact-status">EmailJS no está configurado: se usará el cliente de correo como fallback.</p>
-          )}
-        </div>
+        {SERVICE_ID.includes('your_') && (
+          <p className="contact-status">EmailJS no está configurado: se usará el cliente de correo como fallback.</p>
+        )}
+
       </div>
     </section>
   );

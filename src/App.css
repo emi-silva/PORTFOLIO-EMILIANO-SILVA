@@ -473,7 +473,8 @@ p {
 
 .contact-card {
   display: grid;
-  grid-template-columns: 1.4fr auto;
+  grid-template-columns: 1fr 220px;
+  position: relative;
   gap: 2rem;
   align-items: center;
   padding: 2rem 0 0;
@@ -532,10 +533,60 @@ p {
   resize: vertical;
 }
 
+/* Layout: textarea con columna de acciones a la derecha */
+.contact-right {
+  display: flex;
+  align-items: center; /* vertical center relative to left column */
+  margin-top: 2rem; /* bajar los botones un poco más */
+  justify-content: flex-start; /* alinear botón hacia la izquierda del área */
+  margin-left: 0px; /* desplazar la columna derecha ligeramente hacia la derecha */
+}
+.contact-right .contact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* aumentado: más separación entre botones */
+  width: max-content;
+  align-items: stretch;
+}
+.contact-right .button {
+  display: inline-flex;
+  width: 140px; /* ancho fijo para los tres botones */
+  height: 44px; /* altura fija */
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(173,181,205,0.28); /* borde gris-azulado sutil */
+}
+
 .contact-actions { /* slightly adjust spacing for form buttons */
   display: flex;
   gap: 0.75rem;
   align-items: center;
+}
+
+/* Botón enviar correo: rojo con texto blanco */
+.button.email {
+  background: #e02424;
+  color: #ffffff;
+  box-shadow: 0 12px 24px rgba(224,36,36,0.14);
+  border-color: rgba(173,181,205,0.28);
+}
+.button.email:hover {
+  background: #c61b1b;
+  transform: translateY(-1px);
+}
+
+/* Botón WhatsApp: verde con texto blanco */
+.button.whatsapp {
+  background: #25D366;
+  color: #ffffff;
+  box-shadow: 0 12px 24px rgba(37,211,102,0.12);
+  border-color: rgba(173,181,205,0.28);
+}
+.button.whatsapp:hover {
+  background: #1da851;
+  transform: translateY(-1px);
 }
 
 .button[disabled] {
