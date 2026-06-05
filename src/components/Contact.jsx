@@ -36,21 +36,30 @@ export default function Contact() {
 
     console.log('EmailJS: intentanto enviar', { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY, templateParams });
 
+    // Validaciones básicas: si no configuraste service/template/public key, no intentes enviar con EmailJS
+    if (SERVICE_ID.includes('your_') || TEMPLATE_ID.includes('your_')) {
+      // fallback a mailto
+      setStatus('error');
+      setErrorMsg('EmailJS no está configurado (service/template). Se usará el cliente de correo como fallback.');
+      window.location.href = buildMailto();
+      return;
+    }
+
+    if (!PUBLIC_KEY || PUBLIC_KEY.includes('your_')) {
+      setStatus('error');
+      setErrorMsg('Public Key de EmailJS no configurada o inválida. Obtén la clave en https://dashboard.emailjs.com/admin/account');
+      return;
+    }
+
     try {
-      // Si inicializaste con init, no es necesario pasar PUBLIC_KEY aquí
-      if (PUBLIC_KEY && !PUBLIC_KEY.includes('your_')) {
-        await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
-      } else {
-        // En caso de que no inicialices, se puede pasar la public key como fallback
-        await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
-      }
+      // Pasar la public key explícitamente evita depender solo de init/build-time
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
       setStatus('success');
       setName('');
       setSubject('');
       setMessage('');
     } catch (err) {
       console.error('EmailJS error:', err);
-      // extraer mensaje de error si existe
       const msg = err && (err.text || err.message || JSON.stringify(err)) || 'Error desconocido';
       setErrorMsg(msg);
       setStatus('error');
