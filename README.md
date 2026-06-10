@@ -15,23 +15,6 @@ Portafolio personal desarrollado para mostrar proyectos, experiencia y habilidad
 ---
 
 ## 🛠️ Tecnologías
-# 🚀 Portafolio — Emiliano Silva
-
-Portafolio personal desarrollado para mostrar proyectos, experiencia y habilidades como desarrollador Full Stack. Este repositorio contiene una web estática creada con Vite y React, con un formulario de contacto integrado.
-
----
-
-## ✨ Características
-
-- 🎨 **Diseño moderno**: interfaz oscura con gradientes y microanimaciones.
-- 📱 **Responsive**: adaptado a móviles y escritorio.
-- 📧 **Formulario de contacto**: integrado con EmailJS (con fallback a mailto).
-- 🧩 **Secciones**: Hero, Sobre mí, Habilidades, Proyectos y Contacto.
-- ⚡ **Desarrollo rápido**: proyecto configurado con Vite para un entorno de desarrollo ágil.
-
----
-
-## 🛠️ Tecnologías
 
 - **React 19** — Biblioteca de UI.
 - **Vite** — Bundler y servidor de desarrollo.

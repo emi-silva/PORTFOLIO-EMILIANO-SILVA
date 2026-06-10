@@ -1,21 +1,29 @@
 import { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
 import emailjs from '@emailjs/browser';
+import Spinner from "./Spinner";
+
+const fieldVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: (i) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.3, delay: i * 0.08 },
+  }),
+};
 
 export default function Contact() {
   const email = 'emilianosilva25@gmail.com';
   const [name, setName] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
-  const [status, setStatus] = useState(null); // 'sending' | 'success' | 'error'
+  const [status, setStatus] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
 
-  // Replace these with your EmailJS data or set env vars VITE_EMAILJS_* in .env
   const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'your_service_id';
   const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'your_template_id';
   const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key';
 
   useEffect(() => {
-    // Inicializa EmailJS si configuraste la public key
     if (PUBLIC_KEY && !PUBLIC_KEY.includes('your_')) {
       try {
         emailjs.init(PUBLIC_KEY);
@@ -23,7 +31,7 @@ export default function Contact() {
         console.warn('Error inicializando EmailJS', err);
       }
     }
-  }, []);
+  }, [PUBLIC_KEY]);
 
   const sendWithEmailJS = async () => {
     setStatus('sending');
@@ -34,30 +42,26 @@ export default function Contact() {
       to_email: email,
     };
 
-    console.log('EmailJS: intentanto enviar', { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY, templateParams });
-
-    // Validaciones básicas: si no configuraste service/template/public key, no intentes enviar con EmailJS
     if (SERVICE_ID.includes('your_') || TEMPLATE_ID.includes('your_')) {
-      // fallback a mailto
       setStatus('error');
-      setErrorMsg('EmailJS no está configurado (service/template). Se usará el cliente de correo como fallback.');
-      window.location.href = buildMailto();
+      setErrorMsg('EmailJS no configurado. Se usará el cliente de correo.');
+      window.open(buildMailto(), '_self');
       return;
     }
 
     if (!PUBLIC_KEY || PUBLIC_KEY.includes('your_')) {
       setStatus('error');
-      setErrorMsg('Public Key de EmailJS no configurada o inválida. Obtén la clave en https://dashboard.emailjs.com/admin/account');
+      setErrorMsg('Public Key de EmailJS no configurada.');
       return;
     }
 
     try {
-      // Pasar la public key explícitamente evita depender solo de init/build-time
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
       setStatus('success');
       setName('');
       setSubject('');
       setMessage('');
+      setTimeout(() => setStatus(null), 4000);
     } catch (err) {
       console.error('EmailJS error:', err);
       const msg = err && (err.text || err.message || JSON.stringify(err)) || 'Error desconocido';
@@ -79,104 +83,148 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="contact">
-      <div className="section-header">
+    <motion.section
+      id="contacto"
+      className="contact-section"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div
+        className="section-header"
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4 }}
+      >
         <p className="section-label">Contacto</p>
-        <h2>Hablemos de tu próximo proyecto</h2>
-      </div>
+        <h2 className="section-title">Hablemos de tu próximo proyecto</h2>
+      </motion.div>
 
-      <div className="contact-card">
-        <div className="contact-left">
-          <p className="contact-copy">
+      <div className="contact-grid">
+        <motion.div
+          className="contact-text"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
+          <p>
             Si buscas un desarrollador que entregue soluciones reales y con estilo,
-            envíame un mensaje. Estoy listo para ayudarte a construir algo
-            memorable.
+            estoy listo para ayudar. Podés escribirme directamente o enviarme un mensaje
+            por el formulario.
           </p>
+          <div className="contact-socials">
+            <a
+              className="contact-social-link"
+              href={`mailto:${email}`}
+              aria-label="Email"
+            >
+              ✉️
+            </a>
+            <a
+              className="contact-social-link"
+              href="https://wa.me/543413916033"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              💬
+            </a>
+            <a
+              className="contact-social-link"
+              href="https://www.linkedin.com/in/emiliano-silva-28710b191"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              🔗
+            </a>
+          </div>
+        </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+        >
           <form
-            id="contact-form"
             className="contact-form"
             onSubmit={async (e) => {
               e.preventDefault();
-              // Si no configuraste EmailJS, usar mailto como fallback
               if (SERVICE_ID.includes('your_') || TEMPLATE_ID.includes('your_')) {
-                window.location.href = buildMailto();
+                window.open(buildMailto(), '_self');
                 return;
               }
               await sendWithEmailJS();
             }}
           >
-            <input
+            <motion.input
               className="input"
               type="text"
               placeholder="Tu nombre"
+              aria-label="Tu nombre"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
+              variants={fieldVariants}
+              initial="hidden"
+              whileInView="visible"
+              custom={0}
+              viewport={{ once: true }}
             />
-            <input
+            <motion.input
               className="input"
               type="text"
               placeholder="Asunto"
+              aria-label="Asunto"
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
+              required
+              variants={fieldVariants}
+              initial="hidden"
+              whileInView="visible"
+              custom={1}
+              viewport={{ once: true }}
             />
-            <textarea
+            <motion.textarea
               className="textarea"
               placeholder="Escribe tu mensaje aquí"
+              aria-label="Mensaje"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              required
+              variants={fieldVariants}
+              initial="hidden"
+              whileInView="visible"
+              custom={2}
+              viewport={{ once: true }}
             />
+            <motion.button
+              className="button primary"
+              type="submit"
+              disabled={status === 'sending'}
+              style={{ alignSelf: 'flex-start' }}
+              variants={fieldVariants}
+              initial="hidden"
+              whileInView="visible"
+              custom={3}
+              viewport={{ once: true }}
+            >
+              {status === 'sending' ? (
+                <><Spinner /> Enviando...</>
+              ) : 'Enviar mensaje'}
+            </motion.button>
           </form>
-        </div>
 
-        <div className="contact-right">
-          <div className="contact-actions">
-              <button
-                className="button email"
-                form="contact-form"
-                type="submit"
-                disabled={status === 'sending'}
-                onClick={async (e) => {
-                  // When clicking the external submit button, ensure form submit handler runs
-                  if (SERVICE_ID.includes('your_') || TEMPLATE_ID.includes('your_')) {
-                    // fallback to mailto; buildMailto uses current subject/message/name
-                    window.location.href = buildMailto();
-                    return;
-                  }
-                  await sendWithEmailJS();
-                }}
-              >
-                {status === 'sending' ? 'Enviando...' : 'Enviar correo'}
-              </button>
-
-              <a
-                className="button whatsapp"
-                href="https://wa.me/543413916033?text=Hola%20Emiliano%2C%20me%20interesa%20tu%20servicio%20de%20desarrollo%20web"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp
-              </a>
-              <a
-                className="button secondary"
-                href="https://www.linkedin.com/in/emiliano-silva-28710b191"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-          </div>
-        </div>
-
-        {status === 'success' && <p className="contact-status">Mensaje enviado correctamente.</p>}
+          {status === 'success' && <p className="contact-status success">✓ Mensaje enviado correctamente.</p>}
           {status === 'error' && (
-            <p className="contact-status">Error al enviar. {errorMsg || 'Intenta nuevamente.'}</p>
+            <p className="contact-status error">Error: {errorMsg || 'Intenta nuevamente.'}</p>
           )}
-        {SERVICE_ID.includes('your_') && (
-          <p className="contact-status">EmailJS no está configurado: se usará el cliente de correo como fallback.</p>
-        )}
-
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
