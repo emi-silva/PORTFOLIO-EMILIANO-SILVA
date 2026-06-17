@@ -1,20 +1,16 @@
 [
   {
-    "titulo": "Portfolio Moderno",
-    "descripcion": "Diseño oscuro y experiencia fluida creada con React, Vite y CSS.",
-    "tecnologias": "React · Vite · CSS",
-    "link": "#"
-  },
-  {
-    "titulo": "App de Tareas",
-    "descripcion": "Gestión de actividades con lógica de usuario y experiencia móvil.",
-    "tecnologias": "React · Node.js · MongoDB",
-    "link": "#"
-  },
-  {
-    "titulo": "Landing Web",
-    "descripcion": "Landing page responsive con una estructura clara y visual moderna.",
+    "titulo": "Sushi Club - Landing Page",
+    "descripcion": "Landing page para restaurant de sushi artesanal en Rosario: menú interactivo, galería, opiniones de clientes y sistema de reservas.",
     "tecnologias": "HTML · CSS · JavaScript",
-    "link": "#"
+    "link": "https://sushiclub-landing-page.vercel.app/",
+    "imagen": "/assets/sushiclub-thumb.jpg"
+  },
+  {
+    "titulo": "Ruta 40 - Bar de Ruta",
+    "descripcion": "Landing page para un bar de ruta para motoqueros en Mendoza. Comida criolla, cerveza artesanal y ambiente sobre dos ruedas.",
+    "tecnologias": "React · Vite · CSS",
+    "link": "https://ruta40bar.vercel.app/",
+    "imagen": "/assets/ruta40-thumb.jpg"
   }
 ]

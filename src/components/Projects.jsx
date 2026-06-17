@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import proyectos from "../data/projects.json";
 
@@ -13,6 +14,31 @@ const cardVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
+
+function ProjectImage({ src, alt }) {
+  const [error, setError] = useState(false);
+
+  if (error || !src) {
+    return (
+      <div className="project-image-fallback">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      className="project-image"
+      src={src}
+      alt={alt}
+      onError={() => setError(true)}
+    />
+  );
+}
 
 export default function Projects() {
   return (
@@ -36,24 +62,6 @@ export default function Projects() {
       </motion.div>
 
       <motion.div
-        className="featured-project"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-      >
-        <div className="featured-project-image">⚡</div>
-        <div className="featured-project-content">
-          <h3>Portfolio Profesional</h3>
-          <p>
-            Diseño oscuro con animaciones suaves, tipografía bold y experiencia
-            fluida. Construido con React, Vite, Framer Motion y modo oscuro/claro.
-          </p>
-          <a className="button primary" href="#">Ver proyecto →</a>
-        </div>
-      </motion.div>
-
-      <motion.div
         className="project-grid"
         variants={containerVariants}
         initial="hidden"
@@ -66,6 +74,7 @@ export default function Projects() {
             className="project-card"
             variants={cardVariants}
           >
+            <ProjectImage src={p.imagen} alt={p.titulo} />
             <div className="project-top">
               <span className="project-tag">Proyecto</span>
               <span className="project-tech">{p.tecnologias}</span>

@@ -873,7 +873,6 @@ a {
 }
 
 .project-card {
-  padding: 1.5rem;
   border-radius: 0.75rem;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -887,6 +886,7 @@ a {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   position: relative;
   overflow: hidden;
+  padding: 0 0 1.5rem;
 }
 
 .project-card::before {
@@ -911,7 +911,43 @@ a {
   opacity: 1;
 }
 
+.project-image {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.project-image-fallback {
+  width: 100%;
+  aspect-ratio: 16/10;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.04));
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-muted);
+  opacity: 0.4;
+}
+
+.project-card h3 {
+  padding: 0 1.5rem;
+}
+
+.project-card p {
+  padding: 0 1.5rem;
+}
+
+.project-card .button {
+  margin: auto 1.5rem 0;
+  align-self: flex-start;
+  padding: 0.55rem 1.15rem;
+  font-size: 0.8rem;
+}
+
 .project-top {
+  padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
   gap: 0.75rem;
@@ -954,13 +990,6 @@ a {
   line-height: 1.7;
   position: relative;
   z-index: 1;
-}
-
-.project-card .button {
-  margin-top: auto;
-  align-self: flex-start;
-  padding: 0.55rem 1.15rem;
-  font-size: 0.8rem;
 }
 
 /* Contact */
