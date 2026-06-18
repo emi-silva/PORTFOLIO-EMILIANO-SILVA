@@ -12,5 +12,26 @@
     "tecnologias": "React · Vite · CSS",
     "link": "https://ruta40bar.vercel.app/",
     "imagen": "/assets/ruta40-thumb.jpg"
+  },
+  {
+    "titulo": "MovieCenter - Streaming de Películas",
+    "descripcion": "Plataforma de streaming de películas con datos de TMDB, exploración por categorías y diseño responsive.",
+    "tecnologias": "Next.js · React · TypeScript · Tailwind CSS · TMDB API",
+    "link": "https://moviecenter-iota.vercel.app/",
+    "imagen": "/assets/moviecenter-thumb.png"
+  },
+  {
+    "titulo": "SistemaG - Sistema de Gestión",
+    "descripcion": "Sistema de gestión web con módulos de facturación, clientes, stock, compras, proveedores y contabilidad. Inspirado en Tango Gestión.",
+    "tecnologias": "React · Vite · Bootstrap · React Router · Supabase",
+    "link": "https://sistemag.vercel.app/",
+    "imagen": "/assets/sistemag-thumb.png"
+  },
+  {
+    "titulo": "ÁCIDO - E-Commerce",
+    "descripcion": "Tienda online de ropa urbana con catálogo de 51 productos, carrito de compras, pagos con Stripe y experiencias 3D.",
+    "tecnologias": "Next.js · TypeScript · Prisma · SQLite · Tailwind CSS · Stripe · Three.js",
+    "link": "https://acidoec.vercel.app/",
+    "imagen": "/assets/acido-thumb.png"
   }
 ]
