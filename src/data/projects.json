@@ -33,5 +33,12 @@
     "tecnologias": "Next.js · TypeScript · Prisma · SQLite · Tailwind CSS · Stripe · Three.js",
     "link": "https://acidoec.vercel.app/",
     "imagen": "/assets/acido-thumb.png"
+  },
+  {
+    "titulo": "Electricidad Jet - Materiales Eléctricos",
+    "descripcion": "Sitio web para comercio de materiales eléctricos con catálogo de productos, galería de marcas, sistema de cotización por WhatsApp y diseño moderno responsive.",
+    "tecnologias": "Next.js · React · CSS Modules",
+    "link": "https://electricidadjet.vercel.app/",
+    "imagen": "/assets/electricidadjet-thumb.png"
   }
 ]
